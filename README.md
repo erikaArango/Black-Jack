@@ -1,2 +1,3 @@
 # Black-Jack
-Juego de cartas Black Jack o 21 
+Juego de cartas Black Jack o 21  para practicar Javascript
+
