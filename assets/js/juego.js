@@ -33,6 +33,24 @@ const orderCard = () => {
     console.log(card);
     return card;
 }
-for ( let i = 0; i <= 100; i++){
-orderCard();
+
+//orderCard();
+
+const cardValue = (card) => {
+    const valor = card.substring(0, card.length -1);
+    return( isNaN() ) ?
+    ( valor === 'A' ) ? 11 : 10
+    : valor * 1;
+    
+    // let points = 0;
+    // if (isNaN( valor )){
+    //    points = ( valor === 'A' ) ? 11 : 10;
+    // } else {
+    //     console.log('Is a number');
+    //     points = valor * 1;
+    // }
+    // console.log(points)
 }
+ const valor = cardValue ( orderCard() );
+ console.log({ valor });
+cardValue ('JD');
