@@ -11,6 +11,7 @@ body {
   color: white;
   padding: 20px;
   font-size: 25px;
+  font-family:'Times New Roman', Times, serif;
 }
 
 .imageCard {
@@ -22,5 +23,15 @@ body {
 
 #player-cards,
 #computer-cards {
-  height: 240px;
+  height: 300px;
+  margin: 19px 54px;
+}
+
+#btnOrder {
+    margin: 13px 26px;
+    
+}
+
+h1{
+    font-family:'Times New Roman', Times, serif;
 }
