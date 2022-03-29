@@ -1,8 +1,3 @@
-//patron modulo
-/* (( ) => {
-
-}) ( ); */
-
 (( ) => {
     'use strict'
 
@@ -23,9 +18,7 @@
         const divComputerCards = document.querySelector("#computer-cards");
         
         const htmlPoints = document.querySelectorAll("small");
-
-       
-        
+ 
         //this function creates a new deck
         const createDeck = () => {
             deck = [ ];
@@ -50,7 +43,7 @@
             if (deck.length === 0) {
                 throw "No hay Cartas en el deck";
             }
-                return deck.pop();
+                    return deck.pop();
         };
         
         //orderCard();
