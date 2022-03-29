@@ -6,8 +6,13 @@ let playerPoints = 0;
 let computerPoints = 0;
 
 //references HTML
-const btnPedir   = document.querySelector('#btnPedir');
-const htmlPoints = document.querySelectorAll( 'small');
+const btnOrder = document.querySelector("#btnOrder");
+const btnStop = document.querySelector( "#btnDetener");
+
+const divPlayerCards = document.querySelector("#player-cards");
+const divComputerCards = document.querySelector("#computer-cards");
+
+const htmlPoints = document.querySelectorAll("small");
 
 //this function creates a new deck
 const createDeck = () => {
@@ -44,24 +49,66 @@ const orderCard = () => {
 
 const cardValue = (card) => {
   const valor = card.substring(0, card.length - 1);
-  return isNaN() ? (valor === "A" ? 11 : 10) : valor * 1;
+  return isNaN(valor) ? (valor === "A" ? 11 : 10) : valor * 1;
+};
 
-  // let points = 0;
-  // if (isNaN( valor )){
-  //    points = ( valor === 'A' ) ? 11 : 10;
-  // } else {
-  //     console.log('Is a number');
-  //     points = valor * 1;
-  // }
-  // console.log(points)
+//computerShift
+
+const computerShift = (minumunPoints) => {
+  do {
+  const card = orderCard();
+
+  computerPoints = computerPoints + cardValue(card);
+  htmlPoints[1].innerText = computerPoints;
+
+  const imgCard = document.createElement("img");
+  imgCard.src = `assets/cartas/${card}.png`;
+  imgCard.classList.add("imageCard");
+  divComputerCards.append(imgCard);
+
+  if (minimunPoints > 21) {
+      break;
+  }
+
+} while(  (puntosComputadora < puntosMinimos)  && (puntosMinimos <= 21 ) );
 };
 
 //eventos
 
-btnPedir.addEventListener("click", ( ) => {
+btnOrder.addEventListener("click", () => {
   const card = orderCard();
 
   playerPoints = playerPoints + cardValue(card);
-  htmlPoints [ 0 ].innerText = playerPoints ;
-  console.log(playerPoints);
+  htmlPoints[0].innerText = playerPoints;
+
+  //section where the player asks for the cards
+  const imgCard = document.createElement("img");
+  imgCard.src = `assets/cartas/${card}.png`;
+  imgCard.classList.add("imageCard");
+  divPlayerCards.append(imgCard);
+
+  if (playerPoints > 21) {
+    console.warn("Lo siento, Perdiste :(");
+    btnOrder.disabled = true;
+    btnStop.disabled = true;
+    computerShift( playerPoints);
+
+  } else if (playerPoints === 21) {
+    console.warn(" Ganaste!!!");
+    btnOrder.disabled = true;
+    btnStop.disabled = true;
+
+    computerShift( playerPoints);
+  }
 });
+
+btnStop.addEventListener("click", ( ) => {
+    btnOrder.disabled = true;
+    btnStop.disabled = true;
+
+    computerShift ( playerPoints )
+
+
+})
+
+
