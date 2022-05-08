@@ -113,7 +113,7 @@
             }
         });
         
-        btnStop.addEventListener("click", () => {
+        btnStop.addEventListener("click", ( ) => {
             btnOrder.disabled = true;
             btnStop.disabled = true;
             
